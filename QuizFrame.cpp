@@ -1,5 +1,6 @@
 #include <wx/wx.h>
 #include "QuizFrame.h"
+#include <iostream>
 
 QuizFrame::QuizFrame() : wxFrame(nullptr, wxID_ANY, "Quiz")
 {
@@ -10,8 +11,17 @@ QuizFrame::QuizFrame() : wxFrame(nullptr, wxID_ANY, "Quiz")
 
     check->Bind(wxEVT_BUTTON, &QuizFrame::OnCheck, this);
     this->Bind(wxEVT_CLOSE_WINDOW, &QuizFrame::OnClose, this);
-    questions = db->get_quiz_questions();
-    RunQuiz();
+
+    try
+    {
+        questions = db->get_quiz_questions();
+        RunQuiz();
+    }
+    catch(std::exception &exc) 
+    {
+        check->Unbind(wxEVT_BUTTON, &QuizFrame::OnCheck, this);
+        wxLogMessage(exc.what());
+    }
 }
 
 void QuizFrame::RunQuiz()

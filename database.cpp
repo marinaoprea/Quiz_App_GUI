@@ -6,7 +6,7 @@
 #include "helper.h"
 #include "database.h"
 #include "entity.h"
-#include "cmath"
+#include "exceptions.h"
 
 using json = nlohmann::json;
 
@@ -192,9 +192,10 @@ vector<string> database::get_quiz_questions() const
     mt19937 mt(rd());
 
     for (auto &elem : data)
-    {
         aux.push_back(&elem);
-    }
+
+    if (aux.size() < NO_QUESTIONS)
+        throw NotSufficientElements();
 
     uniform_int_distribution<int> idist(0, aux.size() - 1);
 
@@ -202,7 +203,12 @@ vector<string> database::get_quiz_questions() const
     {
         auto index = idist(mt);
         auto elem = aux.at(index);
-        ans.push_back(elem->get_word());
+        auto word = elem->get_word();
+        auto it = find(ans.begin(), ans.end(), word);
+        if (it == ans.end())
+            ans.push_back(elem->get_word());
+        else
+            i--;
     }
 
     return ans;
