@@ -23,4 +23,5 @@ private:
 
     void RunQuiz();
     void OnCheck(wxCommandEvent &evt);
+    void OnClose(wxCloseEvent &evt);
 };

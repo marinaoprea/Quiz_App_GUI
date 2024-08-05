@@ -218,3 +218,21 @@ bool database::check(const string &word, const string &meaning) const
     return it->get_meaning() == meaning;
 }
 
+bool database::decrement_lives(const string &word)
+{
+    auto elem = entity(word, "");
+    auto it = data.find(elem);
+    if (it == data.end())
+        return false;
+
+    if (it->get_lives() == 1)
+        return true;
+
+    it->decrement_lives();
+    return false;
+}
+
+void database::erase_word(const string &word)
+{
+    data.erase(entity(word, ""));
+}

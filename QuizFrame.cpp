@@ -9,6 +9,7 @@ QuizFrame::QuizFrame() : wxFrame(nullptr, wxID_ANY, "Quiz")
     check = new wxButton(panel, wxID_ANY, "Check", wxPoint(BUTTON_X(100), 500), wxSize(100, 50));
 
     check->Bind(wxEVT_BUTTON, &QuizFrame::OnCheck, this);
+    this->Bind(wxEVT_CLOSE_WINDOW, &QuizFrame::OnClose, this);
     questions = db->get_quiz_questions();
     RunQuiz();
 }
@@ -33,11 +34,21 @@ void QuizFrame::OnCheck(wxCommandEvent &evt)
     std::string meaning = textCtrl->GetLineText(0).ToStdString();
 
     bool correct = db->check(word, meaning);
-    if (correct) {
-       // db->decrement_lives(word);
+    if (correct)
+    {
+        auto rc = db->decrement_lives(word);
         wxLogMessage("Correct");
         good++;
         no_questions--;
+
+        if (rc)
+        {
+            wxMessageDialog dialog(this, "Do you want to erase word " + word + " ?", "Erase", wxYES_NO);
+            auto result = dialog.ShowModal();
+            if (result == wxID_YES)
+                db->erase_word(word);
+        }
+
         RunQuiz();
         return;
     }
@@ -45,4 +56,10 @@ void QuizFrame::OnCheck(wxCommandEvent &evt)
     wxLogMessage("Wrong");
     no_questions--;
     RunQuiz();
+}
+
+void QuizFrame::OnClose(wxCloseEvent &evt)
+{
+    db->dump_to_file(DATABASE_PATH);
+    evt.Skip();
 }
