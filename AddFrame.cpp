@@ -43,7 +43,7 @@ void AddFrame::OnAdd(wxCommandEvent &evt)
 
     string ans = db->add_word(word, meaning);
     evt.Skip();
-    wxLogMessage(wxString(ans));
+    wxLogStatus(this, wxString(ans));
 
 }
 
@@ -51,7 +51,7 @@ void AddFrame::OnSave(wxCommandEvent &evt)
 {
     db->dump_to_file(DATABASE_PATH);
     evt.Skip();
-    wxLogMessage("Saved!");
+    wxLogStatus(this, "Saved!");
 }
 
 void AddFrame::OnClose(wxCloseEvent &evt)

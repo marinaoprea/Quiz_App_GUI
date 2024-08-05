@@ -18,10 +18,8 @@ public:
     void dump_to_file(const string &filename) const;
     void search_word() const;
     void delete_word();
-    void run_quiz();
-    void modify_check();
-    pair<bool, bool> quest(vector<const entity *> &v, int nr);
 
+    string search_meaning(const string &word) const;
     vector<string> get_quiz_questions()const;
     bool check(const string &word, const string &meaning) const;
     bool decrement_lives(const string &word);

@@ -93,95 +93,7 @@ void database::delete_word()
         std::cout << "Deleted word " + word + ".\n";
     }
 
-    modify_check();
-}
-
-// first = modified, second = correct
-pair<bool, bool> database::quest(vector<const entity *> &v, int nr)
-{
-    auto elem = v.at(nr);
-    std::cout << "What does " + elem->get_word() + " mean?\n";
-    string meaning;
-    std::getline(std::cin, meaning);
-
-    if (meaning != elem->get_meaning())
-    {
-        std::cout << "Wrong! " + elem->get_word() + " = " + elem->get_meaning() + "\n";
-        return {false, false};
-    }
-
-    std::cout << "Correct!\n";
-
-    if (elem->get_lives() == 1)
-    {
-        std::cout << "Do you want to keep word " + elem->get_word() + " for further usage? Yes/No\n";
-
-        string ans;
-        std::getline(std::cin, ans);
-
-        if (equal_strings(ans, "Yes"))
-        {
-            return {false, true};
-        }
-        else
-        {
-            std::cout << "Word " + elem->get_word() + " was deleted.\n";
-            data.erase(*elem);
-            v.erase(v.begin() + nr);
-            return {true, true};
-        }
-    }
-
-    auto elem_set = data.find(*elem);
-    elem_set->decrement_lives();
-    return {false, true};
-}
-
-void database::run_quiz()
-{
-    vector<const entity *> aux;
-    random_device rd;
-    mt19937 mt(rd());
-
-    for (auto &elem : data)
-    {
-        aux.push_back(&elem);
-    }
-
-    uniform_int_distribution<int> idist(0, aux.size() - 1);
-
-    std::cin.get();
-
-    bool modified{false};
-    short int counter{0};
-    for (int i = 0; i < NO_QUESTIONS; i++)
-    {
-        if (data.empty())
-        {
-            std::cout << "Congratulations! No more words to learn!\n";
-            return;
-        }
-
-        auto nr = idist(mt);
-        auto ans = quest(aux, nr);
-        if (ans.first)
-            idist = uniform_int_distribution<int>(0, aux.size() - 1);
-        if (ans.second)
-            counter++;
-    }
-
-    std::cout << "Quiz results: " << counter << " / " << NO_QUESTIONS << '\n';
-}
-
-void database::modify_check()
-{
-    last_save++;
-    if (last_save == AUTOSAVE_LIMIT)
-    {
-        dump_to_file(DATABASE_PATH);
-        std::cout << "Autosave performed!\n";
-        last_save = 0;
-    }
+    // modify_check();
 }
 
 vector<string> database::get_quiz_questions() const
@@ -241,4 +153,14 @@ bool database::decrement_lives(const string &word)
 void database::erase_word(const string &word)
 {
     data.erase(entity(word, ""));
+}
+
+string database::search_meaning(const string &word) const
+{
+    auto it = data.find(entity(word, ""));
+    if (it == data.end()) {
+        throw WordNotFound(word);
+    }
+
+    return it->get_meaning();
 }

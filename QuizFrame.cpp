@@ -12,15 +12,18 @@ QuizFrame::QuizFrame() : wxFrame(nullptr, wxID_ANY, "Quiz")
     check->Bind(wxEVT_BUTTON, &QuizFrame::OnCheck, this);
     this->Bind(wxEVT_CLOSE_WINDOW, &QuizFrame::OnClose, this);
 
+    CreateStatusBar();
+
     try
     {
         questions = db->get_quiz_questions();
         RunQuiz();
     }
-    catch(std::exception &exc) 
+    catch (std::exception &exc)
     {
         check->Unbind(wxEVT_BUTTON, &QuizFrame::OnCheck, this);
         wxLogMessage(exc.what());
+        this->Close();
     }
 }
 
@@ -47,7 +50,7 @@ void QuizFrame::OnCheck(wxCommandEvent &evt)
     if (correct)
     {
         auto rc = db->decrement_lives(word);
-        wxLogMessage("Correct");
+        wxLogStatus(this, "Correct");
         good++;
         no_questions--;
 
@@ -63,7 +66,15 @@ void QuizFrame::OnCheck(wxCommandEvent &evt)
         return;
     }
 
-    wxLogMessage("Wrong");
+    try
+    {
+        string meaning = db->search_meaning(word);
+        wxLogMessage(wxString("Wrong! " + word + " = " + meaning));
+    }
+    catch (std::exception &exc)
+    {
+        wxLogMessage(exc.what());
+    }
     no_questions--;
     RunQuiz();
 }
