@@ -1,0 +1,12 @@
+[
+    {
+        "lives": 3,
+        "meaning": "mar",
+        "word": "Apfel"
+    },
+    {
+        "lives": 3,
+        "meaning": "Insert meaning",
+        "word": "Insert word"
+    }
+]
