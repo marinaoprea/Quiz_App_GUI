@@ -6,10 +6,11 @@ QuizFrame::QuizFrame() : wxFrame(nullptr, wxID_ANY, "Quiz")
 {
     panel = new wxPanel(this, wxID_ANY, wxDefaultPosition, wxDefaultSize);
     text = new wxStaticText(panel, wxID_ANY, "", wxPoint(200, 300), wxSize(500, -1));
-    textCtrl = new wxTextCtrl(panel, wxID_ANY, "Insert meaning", wxPoint(200, 400), wxSize(500, -1));
+    textCtrl = new wxTextCtrl(panel, wxID_ANY, "Insert meaning", wxPoint(200, 400), wxSize(500, -1), wxTE_PROCESS_ENTER);
     check = new wxButton(panel, wxID_ANY, "Check", wxPoint(BUTTON_X(100), 500), wxSize(100, 50));
 
     check->Bind(wxEVT_BUTTON, &QuizFrame::OnCheck, this);
+    textCtrl->Bind(wxEVT_TEXT_ENTER, &QuizFrame::OnEnter, this);
     this->Bind(wxEVT_CLOSE_WINDOW, &QuizFrame::OnClose, this);
 
     CreateStatusBar();
@@ -43,6 +44,8 @@ void QuizFrame::RunQuiz()
 
 void QuizFrame::OnCheck(wxCommandEvent &evt)
 {
+    textCtrl->Clear();
+
     std::string word = questions.at(no_questions - 1);
     std::string meaning = textCtrl->GetLineText(0).ToStdString();
 
@@ -77,6 +80,11 @@ void QuizFrame::OnCheck(wxCommandEvent &evt)
     }
     no_questions--;
     RunQuiz();
+}
+
+void QuizFrame::OnEnter(wxCommandEvent &evt)
+{
+    OnCheck(evt);
 }
 
 void QuizFrame::OnClose(wxCloseEvent &evt)

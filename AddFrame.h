@@ -22,4 +22,6 @@ private:
     void OnAdd(wxCommandEvent &evt);
     void OnSave(wxCommandEvent &evt);
     void OnClose(wxCloseEvent &evt);
+    void OnEnterMeaning(wxCommandEvent &evt);
+    void OnEnterWord(wxCommandEvent &evt);
 };

@@ -34,7 +34,7 @@ string database::add_word(const string &word, const string &meaning)
     }
 
     data.insert(entity(word, meaning));
-    return "Added new word";
+    return "Added " + word + " = " + meaning;
 }
 
 void database::dump_to_file(const string &filename) const
