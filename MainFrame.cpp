@@ -3,6 +3,7 @@
 #include "MainFrame.h"
 #include "AddFrame.h"
 #include "QuizFrame.h"
+#include "DeleteFrame.h"
 #include "constants.h"
 
 MainFrame::MainFrame(const wxString &title) : wxFrame(nullptr, wxID_ANY, title)
@@ -15,6 +16,7 @@ MainFrame::MainFrame(const wxString &title) : wxFrame(nullptr, wxID_ANY, title)
     wxButton *buttonSearch = new wxButton(panel, wxID_ANY, "Search word", wxPoint(BUTTON_X(BUTTON_WIDTH), 300), wxSize(BUTTON_WIDTH, BUTTON_HEIGHT));
 
     wxButton *buttonDelete = new wxButton(panel, wxID_ANY, "Delete word", wxPoint(BUTTON_X(BUTTON_WIDTH), 400), wxSize(BUTTON_WIDTH, BUTTON_HEIGHT));
+    buttonDelete->Bind(wxEVT_BUTTON, &MainFrame::OnDelete, this);
 
     wxButton *buttonQuiz = new wxButton(panel, wxID_ANY, "Quiz", wxPoint(BUTTON_X(BUTTON_WIDTH), 500), wxSize(BUTTON_WIDTH, BUTTON_HEIGHT));
     buttonQuiz->Bind(wxEVT_BUTTON, &MainFrame::OnQuiz, this);
@@ -36,74 +38,16 @@ void MainFrame::OnQuiz(wxCommandEvent &evt)
     quizFrame->Show();
 }
 
-void MainFrame::OnButtonClicked(wxCommandEvent &evt)
-{
-    // wxLogStatus("ButtonClicked");
-    wxLogMessage("Button clicked!");
-}
-
-void MainFrame::OnSliderChanged(wxCommandEvent &evt)
-{
-    wxString str = wxString::Format("Slider value: %d", evt.GetInt());
-    wxLogStatus(str);
-}
-
-void MainFrame::OnTextChanged(wxCommandEvent &evt)
-{
-    wxString str = wxString::Format("Text: %s", evt.GetString());
-    wxLogStatus(str);
-}
-
-void MainFrame::OnButton1Clicked(wxCommandEvent &evt)
-{
-    wxLogStatus("Button 1 clicked!");
-    evt.Skip();
-    wxFrame *nextFrame = new wxFrame(nullptr, wxID_ANY, "Next frame");
-    nextFrame->CenterOnParent();
-    nextFrame->Show();
-}
-
-void MainFrame::OnButton2Clicked(wxCommandEvent &evt)
-{
-    wxLogStatus("Button 2 clicked!");
-    evt.Skip();
-}
-
 void MainFrame::OnClose(wxCloseEvent &evt)
 {
     wxLogMessage("Frame Closed");
     evt.Skip();
 }
 
-void MainFrame::OnMouseEvent(wxMouseEvent &evt)
+void MainFrame::OnDelete(wxCommandEvent &evt)
 {
-    wxPoint mousePos = wxGetMousePosition();
-    wxString message = wxString::Format("Mouse Event: (%d, %d)", mousePos.x, mousePos.y);
-    wxLogStatus(message);
-}
-
-void MainFrame::OnKeyEvent(wxKeyEvent &evt)
-{
-    if (evt.GetUnicodeKey() == 'A')
-    {
-        wxLogStatus("A was pressed");
-        return;
-    }
-
-    if (evt.GetKeyCode() == WXK_HOME)
-    {
-        wxLogStatus("Home was pressed");
-        return;
-    }
-
-    wxChar keyChar = evt.GetUnicodeKey();
-    if (keyChar == WXK_NONE)
-    {
-        int keyCode = evt.GetKeyCode();
-        wxLogStatus("Key Event %d", keyCode);
-    }
-    else
-    {
-        wxLogStatus("Key Event: %c", keyChar);
-    }
+    DeleteFrame *deleteFrame = new DeleteFrame();
+    deleteFrame->SetClientSize(WIDTH, HEIGHT);
+    deleteFrame->Center();
+    deleteFrame->Show();
 }

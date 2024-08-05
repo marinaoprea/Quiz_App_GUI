@@ -19,6 +19,8 @@ public:
     WordNotFound(const string &word) : std::exception(), word(word) {}
     const char *what() const throw() override {
         std::string aux = "Word " + word + " not found in database!";
-        return aux.c_str();
+        char* auxx = new char[100];
+        strcpy(auxx, aux.c_str());
+        return auxx;
     }
 };

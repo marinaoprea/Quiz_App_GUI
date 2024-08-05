@@ -72,30 +72,6 @@ void database::search_word() const
         std::cout << it->get_word() + " = " + it->get_meaning() + "\n";
 }
 
-void database::delete_word()
-{
-    std::cout << "Insert word:";
-    std::string word;
-
-    std::cin.get();
-    std::getline(std::cin, word);
-
-    entity aux = entity(word, "");
-
-    auto it = data.find(aux);
-    if (it == data.end())
-    {
-        std::cout << "Word " + word + " does not exist!\n";
-    }
-    else
-    {
-        data.erase(*it);
-        std::cout << "Deleted word " + word + ".\n";
-    }
-
-    // modify_check();
-}
-
 vector<string> database::get_quiz_questions() const
 {
     vector<const entity *> aux;
@@ -152,7 +128,11 @@ bool database::decrement_lives(const string &word)
 
 void database::erase_word(const string &word)
 {
-    data.erase(entity(word, ""));
+    auto elem = entity(word, "");
+    auto it = data.find(elem);
+    if (it == data.end())
+        throw WordNotFound(word);
+    data.erase(elem);
 }
 
 string database::search_meaning(const string &word) const

@@ -11,13 +11,6 @@ private:
 
     void OnAdd(wxCommandEvent &evt);
     void OnQuiz(wxCommandEvent &evt);
-
-    void OnButtonClicked(wxCommandEvent &evt);
-    void OnSliderChanged(wxCommandEvent &evt);
-    void OnTextChanged(wxCommandEvent &evt);
-    void OnButton1Clicked(wxCommandEvent &evt);
-    void OnButton2Clicked(wxCommandEvent &evt);
+    void OnDelete(wxCommandEvent &evt);
     void OnClose(wxCloseEvent &evt);
-    void OnMouseEvent(wxMouseEvent &evt);
-    void OnKeyEvent(wxKeyEvent &evt);
 };
