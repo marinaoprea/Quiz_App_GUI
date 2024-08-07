@@ -4,6 +4,7 @@
 #include "AddFrame.h"
 #include "QuizFrame.h"
 #include "DeleteFrame.h"
+#include "SearchFrame.h"
 #include "constants.h"
 
 MainFrame::MainFrame(const wxString &title) : wxFrame(nullptr, wxID_ANY, title)
@@ -14,6 +15,7 @@ MainFrame::MainFrame(const wxString &title) : wxFrame(nullptr, wxID_ANY, title)
     buttonAdd->Bind(wxEVT_BUTTON, &MainFrame::OnAdd, this);
 
     wxButton *buttonSearch = new wxButton(panel, wxID_ANY, "Search word", wxPoint(BUTTON_X(BUTTON_WIDTH), 300), wxSize(BUTTON_WIDTH, BUTTON_HEIGHT));
+    buttonSearch->Bind(wxEVT_BUTTON, &MainFrame::OnSearch, this);
 
     wxButton *buttonDelete = new wxButton(panel, wxID_ANY, "Delete word", wxPoint(BUTTON_X(BUTTON_WIDTH), 400), wxSize(BUTTON_WIDTH, BUTTON_HEIGHT));
     buttonDelete->Bind(wxEVT_BUTTON, &MainFrame::OnDelete, this);
@@ -50,4 +52,12 @@ void MainFrame::OnDelete(wxCommandEvent &evt)
     deleteFrame->SetClientSize(WIDTH, HEIGHT);
     deleteFrame->Center();
     deleteFrame->Show();
+}
+
+void MainFrame::OnSearch(wxCommandEvent &evt)
+{
+    SearchFrame *searchFrame = new SearchFrame();
+    searchFrame->SetClientSize(WIDTH, HEIGHT);
+    searchFrame->Center();
+    searchFrame->Show();
 }

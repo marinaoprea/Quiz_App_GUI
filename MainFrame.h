@@ -12,5 +12,6 @@ private:
     void OnAdd(wxCommandEvent &evt);
     void OnQuiz(wxCommandEvent &evt);
     void OnDelete(wxCommandEvent &evt);
+    void OnSearch(wxCommandEvent &evt);
     void OnClose(wxCloseEvent &evt);
 };
