@@ -48,9 +48,20 @@ void AddFrame::OnAdd(wxCommandEvent &evt)
 
     string ans = db->add_word(word, meaning);
     evt.Skip();
-    wxLogStatus(this, wxString(ans));
-
+    
     ctrlWord->SetFocus();
+    
+    if (ans.find("already exists") != ans.npos) {
+        wxMessageDialog dialog(this, ans + " Do you want to overwrite it?", "Overwrite", wxYES_NO);
+            auto result = dialog.ShowModal();
+            if (result == wxID_YES) {
+                db->erase_word(word);
+                db->add_word(word, meaning);
+            }
+        ctrlWord->SetFocus();
+        return;
+    }
+    wxLogStatus(this, wxString(ans));
 }
 
 void AddFrame::OnSave(wxCommandEvent &evt)

@@ -30,7 +30,7 @@ string database::add_word(const string &word, const string &meaning)
 
     if (it != data.end())
     {
-        return "Word " + word + "already exists with meaning " + it->get_meaning();
+        return "Word " + word + " already exists with meaning " + it->get_meaning() + ".";
     }
 
     data.insert(entity(word, meaning));

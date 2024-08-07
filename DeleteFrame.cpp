@@ -41,7 +41,7 @@ void DeleteFrame::OnDelete(wxCommandEvent &evt)
         db->erase_word(word);
         wxLogStatus(this, wxString(word + " was erased"));
     }
-    catch (std::exception &exc)
+    catch (WordNotFound &exc)
     {
         auto p = exc.what();
         wxLogMessage(p);

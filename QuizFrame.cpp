@@ -1,5 +1,6 @@
 #include <wx/wx.h>
 #include "QuizFrame.h"
+#include "exceptions.h"
 #include <iostream>
 
 QuizFrame::QuizFrame() : wxFrame(nullptr, wxID_ANY, "Quiz")
@@ -34,6 +35,7 @@ void QuizFrame::RunQuiz()
     {
         text->SetLabelText(wxString::Format("Results: %d / %d", good, NO_QUESTIONS));
         check->Unbind(wxEVT_BUTTON, &QuizFrame::OnCheck, this);
+        textCtrl->Unbind(wxEVT_TEXT_ENTER, &QuizFrame::OnEnter, this);
         textCtrl->Clear();
         return;
     }
@@ -44,10 +46,15 @@ void QuizFrame::RunQuiz()
 
 void QuizFrame::OnCheck(wxCommandEvent &evt)
 {
-    textCtrl->Clear();
-
     std::string word = questions.at(no_questions - 1);
     std::string meaning = textCtrl->GetLineText(0).ToStdString();
+
+    textCtrl->Clear();
+
+    if (meaning.empty()) {
+        wxLogMessage("Meaning field empty");
+        return;
+    }
 
     bool correct = db->check(word, meaning);
     if (correct)
@@ -74,9 +81,11 @@ void QuizFrame::OnCheck(wxCommandEvent &evt)
         string meaning = db->search_meaning(word);
         wxLogMessage(wxString("Wrong! " + word + " = " + meaning));
     }
-    catch (std::exception &exc)
+    catch (WordNotFound &exc)
     {
-        wxLogMessage(exc.what());
+        auto p = exc.what();
+        wxLogMessage(p);
+        delete p;   
     }
     no_questions--;
     RunQuiz();
