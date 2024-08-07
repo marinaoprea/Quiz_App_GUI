@@ -9,19 +9,42 @@
 
 MainFrame::MainFrame(const wxString &title) : wxFrame(nullptr, wxID_ANY, title)
 {
-    wxPanel *panel = new wxPanel(this, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxWANTS_CHARS);
+    this->SetFont(this->GetFont().Scale(1.5));
 
-    wxButton *buttonAdd = new wxButton(panel, wxID_ANY, "Add word", wxPoint(BUTTON_X(BUTTON_WIDTH), 200), wxSize(BUTTON_WIDTH, BUTTON_HEIGHT));
+    panel = new wxPanel(this, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxWANTS_CHARS);
+
+    buttonAdd = new wxButton(panel, wxID_ANY, "Add word", wxDefaultPosition, wxSize(200, 100));
     buttonAdd->Bind(wxEVT_BUTTON, &MainFrame::OnAdd, this);
 
-    wxButton *buttonSearch = new wxButton(panel, wxID_ANY, "Search word", wxPoint(BUTTON_X(BUTTON_WIDTH), 300), wxSize(BUTTON_WIDTH, BUTTON_HEIGHT));
+    buttonSearch = new wxButton(panel, wxID_ANY, "Search word", wxDefaultPosition, wxSize(200, 100));
     buttonSearch->Bind(wxEVT_BUTTON, &MainFrame::OnSearch, this);
 
-    wxButton *buttonDelete = new wxButton(panel, wxID_ANY, "Delete word", wxPoint(BUTTON_X(BUTTON_WIDTH), 400), wxSize(BUTTON_WIDTH, BUTTON_HEIGHT));
+    buttonDelete = new wxButton(panel, wxID_ANY, "Delete word", wxDefaultPosition, wxSize(200, 100));
     buttonDelete->Bind(wxEVT_BUTTON, &MainFrame::OnDelete, this);
 
-    wxButton *buttonQuiz = new wxButton(panel, wxID_ANY, "Quiz", wxPoint(BUTTON_X(BUTTON_WIDTH), 500), wxSize(BUTTON_WIDTH, BUTTON_HEIGHT));
+    buttonQuiz = new wxButton(panel, wxID_ANY, "Quiz", wxDefaultPosition, wxSize(200, 100));
     buttonQuiz->Bind(wxEVT_BUTTON, &MainFrame::OnQuiz, this);
+
+    Scale();
+}
+
+void MainFrame::Scale()
+{
+    wxBoxSizer *mainSizer = new wxBoxSizer(wxVERTICAL);
+
+    wxSizerFlags flags = wxSizerFlags().Center();
+    mainSizer->AddStretchSpacer(1);
+    mainSizer->Add(buttonAdd, flags);
+    mainSizer->AddSpacer(20);
+    mainSizer->Add(buttonSearch, flags);
+    mainSizer->AddSpacer(20);
+    mainSizer->Add(buttonDelete, flags);
+    mainSizer->AddSpacer(20);
+    mainSizer->Add(buttonQuiz, flags);
+    mainSizer->AddStretchSpacer(1);
+
+    panel->SetSizer(mainSizer);
+    mainSizer->SetSizeHints(this);
 }
 
 void MainFrame::OnAdd(wxCommandEvent &evt)

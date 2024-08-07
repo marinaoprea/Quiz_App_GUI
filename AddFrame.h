@@ -19,6 +19,8 @@ private:
     wxButton *add;
     wxButton *save;
 
+    void Scale();
+
     void OnAdd(wxCommandEvent &evt);
     void OnSave(wxCommandEvent &evt);
     void OnClose(wxCloseEvent &evt);

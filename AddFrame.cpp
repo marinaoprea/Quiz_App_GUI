@@ -6,16 +6,18 @@
 
 AddFrame::AddFrame() : wxFrame(nullptr, wxID_ANY, "Add")
 {
+    this->SetFont(this->GetFont().Scale(1.5));
+
     panel = new wxPanel(this, wxID_ANY, wxDefaultPosition, wxDefaultSize);
 
-    textWord = new wxStaticText(panel, wxID_ANY, "Word:", wxPoint(200, 200), wxSize(200, -1));
-    textMeaning = new wxStaticText(panel, wxID_ANY, "Meaning:", wxPoint(200, 300), wxSize(200, -1));
+    textWord = new wxStaticText(panel, wxID_ANY, "Word:");
+    textMeaning = new wxStaticText(panel, wxID_ANY, "Meaning:");
 
-    ctrlWord = new wxTextCtrl(panel, wxID_ANY, "Insert word", wxPoint(300, 200), wxSize(500, -1), wxTE_PROCESS_ENTER);
-    ctrlMeaning = new wxTextCtrl(panel, wxID_ANY, "Insert meaning", wxPoint(300, 300), wxSize(500, -1), wxTE_PROCESS_ENTER);
+    ctrlWord = new wxTextCtrl(panel, wxID_ANY, "Insert word", wxDefaultPosition, wxSize(-1, 50), wxTE_PROCESS_ENTER);
+    ctrlMeaning = new wxTextCtrl(panel, wxID_ANY, "Insert meaning", wxDefaultPosition, wxSize(-1, 50), wxTE_PROCESS_ENTER);
 
-    add = new wxButton(panel, wxID_ANY, "Add", wxPoint(BUTTON_X(100), 450), wxSize(100, 50));
-    save = new wxButton(panel, wxID_ANY, "Save", wxPoint(BUTTON_X(100), 550), wxSize(100, 50));
+    add = new wxButton(panel, wxID_ANY, "Add", wxDefaultPosition, wxSize(150, 75));
+    save = new wxButton(panel, wxID_ANY, "Save", wxDefaultPosition, wxSize(150, 75));
 
     add->Bind(wxEVT_BUTTON, &AddFrame::OnAdd, this);
     save->Bind(wxEVT_BUTTON, &AddFrame::OnSave, this);
@@ -24,6 +26,44 @@ AddFrame::AddFrame() : wxFrame(nullptr, wxID_ANY, "Add")
     this->Bind(wxEVT_CLOSE_WINDOW, &AddFrame::OnClose, this);
 
     wxStatusBar *statusBar = CreateStatusBar();
+
+    Scale();
+}
+
+void AddFrame::Scale()
+{
+    wxBoxSizer *sizer = new wxBoxSizer(wxVERTICAL);
+
+    sizer->AddStretchSpacer();
+
+    wxBoxSizer *textSizer = new wxBoxSizer(wxHORIZONTAL);
+    textSizer->Add(textWord, wxSizerFlags().Center());
+    textSizer->AddSpacer(10);
+    textSizer->Add(ctrlWord, wxSizerFlags().Proportion(1));
+
+    sizer->Add(textSizer, wxSizerFlags().Center().Expand().Border(wxLEFT | wxRIGHT, 50));
+
+    wxBoxSizer *meaningSizer = new wxBoxSizer(wxHORIZONTAL);
+    meaningSizer->Add(textMeaning, wxSizerFlags().Center());
+    meaningSizer->AddSpacer(10);
+    meaningSizer->Add(ctrlMeaning, wxSizerFlags().Proportion(1));
+
+    sizer->AddSpacer(10);
+    sizer->Add(meaningSizer, wxSizerFlags().Center().Expand().Border(wxLEFT | wxRIGHT, 50));
+
+    wxBoxSizer *buttonsSizer = new wxBoxSizer(wxHORIZONTAL);
+    wxSizerFlags flags2 = wxSizerFlags().Center();
+    buttonsSizer->Add(add, flags2);
+    buttonsSizer->AddSpacer(10);
+    buttonsSizer->Add(save, flags2);
+
+    sizer->AddSpacer(25);
+    sizer->Add(buttonsSizer, wxSizerFlags().Center());
+
+    sizer->AddStretchSpacer();
+
+    panel->SetSizer(sizer);
+    sizer->SetSizeHints(this);
 }
 
 void AddFrame::OnAdd(wxCommandEvent &evt)
