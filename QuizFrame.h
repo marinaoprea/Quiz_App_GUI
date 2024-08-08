@@ -21,6 +21,8 @@ private:
 
     std::vector<std::string> questions;
 
+    void Scale() noexcept;
+
     void RunQuiz();
     void OnCheck(wxCommandEvent &evt);
     void OnClose(wxCloseEvent &evt);

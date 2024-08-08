@@ -16,6 +16,8 @@ private:
     wxTextCtrl *ctrlWord;
     wxButton *search;
 
+    void Scale();
+
     void OnSearch(wxCommandEvent &evt);
     void OnEnter(wxCommandEvent &evt);
 };

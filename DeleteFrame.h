@@ -17,6 +17,8 @@ private:
     wxButton *deletebt;
     wxButton *save;
 
+    void Scale() noexcept;
+
     void OnDelete(wxCommandEvent &evt);
     void OnSave(wxCommandEvent &evt);
     void OnClose(wxCloseEvent &evt);

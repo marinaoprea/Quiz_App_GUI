@@ -5,16 +5,18 @@
 
 QuizFrame::QuizFrame() : wxFrame(nullptr, wxID_ANY, "Quiz")
 {
+    this->SetFont(this->GetFont().Scale(1.5));
     panel = new wxPanel(this, wxID_ANY, wxDefaultPosition, wxDefaultSize);
-    text = new wxStaticText(panel, wxID_ANY, "", wxPoint(200, 300), wxSize(500, -1));
-    textCtrl = new wxTextCtrl(panel, wxID_ANY, "Insert meaning", wxPoint(200, 400), wxSize(500, -1), wxTE_PROCESS_ENTER);
-    check = new wxButton(panel, wxID_ANY, "Check", wxPoint(BUTTON_X(100), 500), wxSize(100, 50));
+    text = new wxStaticText(panel, wxID_ANY, "");
+    textCtrl = new wxTextCtrl(panel, wxID_ANY, "Insert meaning", wxDefaultPosition, wxSize(-1, 50), wxTE_PROCESS_ENTER);
+    check = new wxButton(panel, wxID_ANY, "Check", wxDefaultPosition, wxSize(150, 75));
 
     check->Bind(wxEVT_BUTTON, &QuizFrame::OnCheck, this);
     textCtrl->Bind(wxEVT_TEXT_ENTER, &QuizFrame::OnEnter, this);
     this->Bind(wxEVT_CLOSE_WINDOW, &QuizFrame::OnClose, this);
 
     CreateStatusBar();
+    Scale();
 
     try
     {
@@ -27,6 +29,29 @@ QuizFrame::QuizFrame() : wxFrame(nullptr, wxID_ANY, "Quiz")
         wxLogMessage(exc.what());
         this->Close();
     }
+}
+
+void QuizFrame::Scale() noexcept
+{
+    wxBoxSizer *sizer = new wxBoxSizer(wxVERTICAL);
+
+    sizer->AddStretchSpacer();
+
+    sizer->Add(text, wxSizerFlags().Center());
+    sizer->AddSpacer(50);
+    sizer->Add(textCtrl, wxSizerFlags().Expand().Border(wxLEFT | wxRIGHT, 50));
+
+    wxBoxSizer *buttonsSizer = new wxBoxSizer(wxHORIZONTAL);
+    wxSizerFlags flags2 = wxSizerFlags().Center();
+    buttonsSizer->Add(check, flags2);
+
+    sizer->AddSpacer(75);
+    sizer->Add(buttonsSizer, wxSizerFlags().Center());
+
+    sizer->AddStretchSpacer();
+
+    panel->SetSizer(sizer);
+    sizer->SetSizeHints(this);
 }
 
 void QuizFrame::RunQuiz()
@@ -42,6 +67,7 @@ void QuizFrame::RunQuiz()
 
     std::string str = questions.at(no_questions - 1);
     text->SetLabelText(wxString::Format("What does %s mean?", str));
+    text->SetExtraStyle(wxBOLD);
 }
 
 void QuizFrame::OnCheck(wxCommandEvent &evt)
@@ -51,7 +77,8 @@ void QuizFrame::OnCheck(wxCommandEvent &evt)
 
     textCtrl->Clear();
 
-    if (meaning.empty()) {
+    if (meaning.empty())
+    {
         wxLogMessage("Meaning field empty");
         return;
     }
@@ -85,7 +112,7 @@ void QuizFrame::OnCheck(wxCommandEvent &evt)
     {
         auto p = exc.what();
         wxLogMessage(p);
-        delete p;   
+        delete p;
     }
     no_questions--;
     RunQuiz();

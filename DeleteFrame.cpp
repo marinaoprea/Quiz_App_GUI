@@ -7,14 +7,16 @@
 
 DeleteFrame::DeleteFrame() : wxFrame(nullptr, wxID_ANY, "Delete")
 {
+    this->SetFont(this->GetFont().Scale(1.5));
+
     panel = new wxPanel(this, wxID_ANY, wxDefaultPosition, wxDefaultSize);
 
-    textWord = new wxStaticText(panel, wxID_ANY, "Word:", wxPoint(200, 200), wxSize(200, -1));
+    textWord = new wxStaticText(panel, wxID_ANY, "Word:");
 
-    ctrlWord = new wxTextCtrl(panel, wxID_ANY, "Insert word", wxPoint(300, 200), wxSize(500, -1), wxTE_PROCESS_ENTER);
+    ctrlWord = new wxTextCtrl(panel, wxID_ANY, "Insert word", wxDefaultPosition, wxSize(-1, 50), wxTE_PROCESS_ENTER);
 
-    deletebt = new wxButton(panel, wxID_ANY, "Delete", wxPoint(BUTTON_X(100), 450), wxSize(100, 50));
-    save = new wxButton(panel, wxID_ANY, "Save", wxPoint(BUTTON_X(100), 550), wxSize(100, 50));
+    deletebt = new wxButton(panel, wxID_ANY, "Delete", wxDefaultPosition, wxSize(150, 75));
+    save = new wxButton(panel, wxID_ANY, "Save", wxDefaultPosition, wxSize(150, 75));
 
     deletebt->Bind(wxEVT_BUTTON, &DeleteFrame::OnDelete, this);
     save->Bind(wxEVT_BUTTON, &DeleteFrame::OnSave, this);
@@ -22,6 +24,36 @@ DeleteFrame::DeleteFrame() : wxFrame(nullptr, wxID_ANY, "Delete")
     this->Bind(wxEVT_CLOSE_WINDOW, &DeleteFrame::OnClose, this);
 
     wxStatusBar *statusBar = CreateStatusBar();
+
+    Scale();
+}
+
+void DeleteFrame::Scale() noexcept
+{
+    wxBoxSizer *sizer = new wxBoxSizer(wxVERTICAL);
+
+    sizer->AddStretchSpacer();
+
+    wxBoxSizer *textSizer = new wxBoxSizer(wxHORIZONTAL);
+    textSizer->Add(textWord, wxSizerFlags().Center());
+    textSizer->AddSpacer(10);
+    textSizer->Add(ctrlWord, wxSizerFlags().Proportion(1));
+
+    sizer->Add(textSizer, wxSizerFlags().Center().Expand().Border(wxLEFT | wxRIGHT, 50));
+
+    wxBoxSizer *buttonsSizer = new wxBoxSizer(wxHORIZONTAL);
+    wxSizerFlags flags2 = wxSizerFlags().Center();
+    buttonsSizer->Add(deletebt, flags2);
+    buttonsSizer->AddSpacer(10);
+    buttonsSizer->Add(save, flags2);
+
+    sizer->AddSpacer(75);
+    sizer->Add(buttonsSizer, wxSizerFlags().Center());
+
+    sizer->AddStretchSpacer();
+
+    panel->SetSizer(sizer);
+    sizer->SetSizeHints(this);
 }
 
 void DeleteFrame::OnDelete(wxCommandEvent &evt)
