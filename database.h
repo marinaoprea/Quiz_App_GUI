@@ -22,6 +22,8 @@ public:
     bool check(const string &word, const string &meaning) const;
     bool decrement_lives(const string &word);
     void erase_word(const string &word);
+
+    pair<string, vector<string>> get_multiple(const string &question) const;
 };
 
 #endif

@@ -121,9 +121,42 @@ void database::erase_word(const string &word)
 string database::search_meaning(const string &word) const
 {
     auto it = data.find(entity(word, ""));
-    if (it == data.end()) {
+    if (it == data.end())
+    {
         throw WordNotFound(word);
     }
 
     return it->get_meaning();
+}
+
+pair<string, vector<string>> database::get_multiple(const string &question) const
+{
+    auto meaning = search_meaning(question);
+    vector<string> ans;
+    ans.push_back(meaning);
+
+    random_device rd;
+    vector<const entity *> aux;
+    mt19937 mt(rd());
+
+    for (auto &elem : data)
+        aux.push_back(&elem);
+
+    uniform_int_distribution<int> idist(0, aux.size() - 1);
+
+    for (auto i = 1; i < NO_CHOICES; i++)
+    {
+        auto index = idist(mt);
+        auto elem = aux.at(index);
+        auto meaning2 = elem->get_meaning();
+        auto it = find(ans.begin(), ans.end(), meaning2);
+        if (it == ans.end())
+            ans.push_back(meaning2);
+        else
+            i--;
+    }
+
+    shuffle(ans.begin(), ans.end(), default_random_engine(rd()));
+
+    return make_pair(meaning, ans);
 }

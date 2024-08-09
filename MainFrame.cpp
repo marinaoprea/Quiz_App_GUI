@@ -5,6 +5,7 @@
 #include "QuizFrame.h"
 #include "DeleteFrame.h"
 #include "SearchFrame.h"
+#include "MultFrame.h"
 #include "constants.h"
 
 MainFrame::MainFrame(const wxString &title) : wxFrame(nullptr, wxID_ANY, title)
@@ -25,6 +26,9 @@ MainFrame::MainFrame(const wxString &title) : wxFrame(nullptr, wxID_ANY, title)
     buttonQuiz = new wxButton(panel, wxID_ANY, "Quiz", wxDefaultPosition, wxSize(MAIN_BUTTON_W, MAIN_BUTTON_H));
     buttonQuiz->Bind(wxEVT_BUTTON, &MainFrame::OnQuiz, this);
 
+    buttonMultiple = new wxButton(panel, wxID_ANY, "Mult Choice", wxDefaultPosition, wxSize(MAIN_BUTTON_W, MAIN_BUTTON_H));
+    buttonMultiple->Bind(wxEVT_BUTTON, &MainFrame::OnMult, this); 
+
     Scale();
 }
 
@@ -41,10 +45,20 @@ void MainFrame::Scale()
     mainSizer->Add(buttonDelete, flags);
     mainSizer->AddSpacer(MAIN_SPACER);
     mainSizer->Add(buttonQuiz, flags);
+    mainSizer->AddSpacer(MAIN_SPACER);
+    mainSizer->Add(buttonMultiple, flags);
     mainSizer->AddStretchSpacer(1);
 
     panel->SetSizer(mainSizer);
     mainSizer->SetSizeHints(this);
+}
+
+void MainFrame::OnMult(wxCommandEvent &evt)
+{
+    MultFrame *multFrame = new MultFrame();
+    multFrame->SetClientSize(WIDTH, HEIGHT);
+    multFrame->Center();
+    multFrame->Show();
 }
 
 void MainFrame::OnAdd(wxCommandEvent &evt)
