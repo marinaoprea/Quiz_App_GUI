@@ -6,18 +6,18 @@
 
 AddFrame::AddFrame() : wxFrame(nullptr, wxID_ANY, "Add")
 {
-    this->SetFont(this->GetFont().Scale(1.5));
+    this->SetFont(this->GetFont().Scale(TEXT_SCALE));
 
-    panel = new wxPanel(this, wxID_ANY, wxDefaultPosition, wxDefaultSize);
+    panel = new wxPanel(this, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxWANTS_CHARS);
 
     textWord = new wxStaticText(panel, wxID_ANY, "Word:");
     textMeaning = new wxStaticText(panel, wxID_ANY, "Meaning:");
 
-    ctrlWord = new wxTextCtrl(panel, wxID_ANY, "Insert word", wxDefaultPosition, wxSize(-1, 50), wxTE_PROCESS_ENTER);
-    ctrlMeaning = new wxTextCtrl(panel, wxID_ANY, "Insert meaning", wxDefaultPosition, wxSize(-1, 50), wxTE_PROCESS_ENTER);
+    ctrlWord = new wxTextCtrl(panel, wxID_ANY, "Insert word", wxDefaultPosition, wxSize(-1, CTRL_HEIGHT), wxTE_PROCESS_ENTER);
+    ctrlMeaning = new wxTextCtrl(panel, wxID_ANY, "Insert meaning", wxDefaultPosition, wxSize(-1, CTRL_HEIGHT), wxTE_PROCESS_ENTER);
 
-    add = new wxButton(panel, wxID_ANY, "Add", wxDefaultPosition, wxSize(150, 75));
-    save = new wxButton(panel, wxID_ANY, "Save", wxDefaultPosition, wxSize(150, 75));
+    add = new wxButton(panel, wxID_ANY, "Add", wxDefaultPosition, wxSize(BUTTON_W, BUTTON_H));
+    save = new wxButton(panel, wxID_ANY, "Save", wxDefaultPosition, wxSize(BUTTON_W, BUTTON_H));
 
     add->Bind(wxEVT_BUTTON, &AddFrame::OnAdd, this);
     save->Bind(wxEVT_BUTTON, &AddFrame::OnSave, this);
@@ -41,7 +41,7 @@ void AddFrame::Scale()
     textSizer->AddSpacer(10);
     textSizer->Add(ctrlWord, wxSizerFlags().Proportion(1));
 
-    sizer->Add(textSizer, wxSizerFlags().Center().Expand().Border(wxLEFT | wxRIGHT, 50));
+    sizer->Add(textSizer, wxSizerFlags().Center().Expand().Border(wxLEFT | wxRIGHT, CTRL_BORDER));
 
     wxBoxSizer *meaningSizer = new wxBoxSizer(wxHORIZONTAL);
     meaningSizer->Add(textMeaning, wxSizerFlags().Center());
@@ -49,7 +49,7 @@ void AddFrame::Scale()
     meaningSizer->Add(ctrlMeaning, wxSizerFlags().Proportion(1));
 
     sizer->AddSpacer(10);
-    sizer->Add(meaningSizer, wxSizerFlags().Center().Expand().Border(wxLEFT | wxRIGHT, 50));
+    sizer->Add(meaningSizer, wxSizerFlags().Center().Expand().Border(wxLEFT | wxRIGHT, CTRL_BORDER));
 
     wxBoxSizer *buttonsSizer = new wxBoxSizer(wxHORIZONTAL);
     wxSizerFlags flags2 = wxSizerFlags().Center();
@@ -88,16 +88,18 @@ void AddFrame::OnAdd(wxCommandEvent &evt)
 
     string ans = db->add_word(word, meaning);
     evt.Skip();
-    
+
     ctrlWord->SetFocus();
-    
-    if (ans.find("already exists") != ans.npos) {
+
+    if (ans.find("already exists") != ans.npos)
+    {
         wxMessageDialog dialog(this, ans + " Do you want to overwrite it?", "Overwrite", wxYES_NO);
-            auto result = dialog.ShowModal();
-            if (result == wxID_YES) {
-                db->erase_word(word);
-                db->add_word(word, meaning);
-            }
+        auto result = dialog.ShowModal();
+        if (result == wxID_YES)
+        {
+            db->erase_word(word);
+            db->add_word(word, meaning);
+        }
         ctrlWord->SetFocus();
         return;
     }

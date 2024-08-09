@@ -7,16 +7,16 @@
 
 DeleteFrame::DeleteFrame() : wxFrame(nullptr, wxID_ANY, "Delete")
 {
-    this->SetFont(this->GetFont().Scale(1.5));
+    this->SetFont(this->GetFont().Scale(TEXT_SCALE));
 
     panel = new wxPanel(this, wxID_ANY, wxDefaultPosition, wxDefaultSize);
 
     textWord = new wxStaticText(panel, wxID_ANY, "Word:");
 
-    ctrlWord = new wxTextCtrl(panel, wxID_ANY, "Insert word", wxDefaultPosition, wxSize(-1, 50), wxTE_PROCESS_ENTER);
+    ctrlWord = new wxTextCtrl(panel, wxID_ANY, "Insert word", wxDefaultPosition, wxSize(-1, CTRL_HEIGHT), wxTE_PROCESS_ENTER);
 
-    deletebt = new wxButton(panel, wxID_ANY, "Delete", wxDefaultPosition, wxSize(150, 75));
-    save = new wxButton(panel, wxID_ANY, "Save", wxDefaultPosition, wxSize(150, 75));
+    deletebt = new wxButton(panel, wxID_ANY, "Delete", wxDefaultPosition, wxSize(BUTTON_W, BUTTON_H));
+    save = new wxButton(panel, wxID_ANY, "Save", wxDefaultPosition, wxSize(BUTTON_W, BUTTON_H));
 
     deletebt->Bind(wxEVT_BUTTON, &DeleteFrame::OnDelete, this);
     save->Bind(wxEVT_BUTTON, &DeleteFrame::OnSave, this);
@@ -39,7 +39,7 @@ void DeleteFrame::Scale() noexcept
     textSizer->AddSpacer(10);
     textSizer->Add(ctrlWord, wxSizerFlags().Proportion(1));
 
-    sizer->Add(textSizer, wxSizerFlags().Center().Expand().Border(wxLEFT | wxRIGHT, 50));
+    sizer->Add(textSizer, wxSizerFlags().Center().Expand().Border(wxLEFT | wxRIGHT, CTRL_BORDER));
 
     wxBoxSizer *buttonsSizer = new wxBoxSizer(wxHORIZONTAL);
     wxSizerFlags flags2 = wxSizerFlags().Center();

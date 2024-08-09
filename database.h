@@ -16,7 +16,6 @@ public:
     void load();
     string add_word(const string &word, const string &meaning);
     void dump_to_file(const string &filename) const;
-    void search_word() const;
 
     string search_meaning(const string &word) const;
     vector<string> get_quiz_questions()const;

@@ -7,15 +7,15 @@
 
 SearchFrame::SearchFrame() : wxFrame(nullptr, wxID_ANY, "Search")
 {
-    this->SetFont(this->GetFont().Scale(1.5));
+    this->SetFont(this->GetFont().Scale(TEXT_SCALE));
 
     panel = new wxPanel(this, wxID_ANY, wxDefaultPosition, wxDefaultSize);
 
     textWord = new wxStaticText(panel, wxID_ANY, "Word:");
 
-    ctrlWord = new wxTextCtrl(panel, wxID_ANY, "Insert word", wxDefaultPosition, wxSize(-1, 50), wxTE_PROCESS_ENTER);
+    ctrlWord = new wxTextCtrl(panel, wxID_ANY, "Insert word", wxDefaultPosition, wxSize(-1, CTRL_HEIGHT), wxTE_PROCESS_ENTER);
 
-    search = new wxButton(panel, wxID_ANY, "Search", wxDefaultPosition, wxSize(150, 75));
+    search = new wxButton(panel, wxID_ANY, "Search", wxDefaultPosition, wxSize(BUTTON_W, BUTTON_H));
 
     search->Bind(wxEVT_BUTTON, &SearchFrame::OnSearch, this);
     ctrlWord->Bind(wxEVT_TEXT_ENTER, &SearchFrame::OnEnter, this);
@@ -36,7 +36,7 @@ void SearchFrame::Scale()
     textSizer->AddSpacer(10);
     textSizer->Add(ctrlWord, wxSizerFlags().Proportion(1));
 
-    sizer->Add(textSizer, wxSizerFlags().Center().Expand().Border(wxLEFT | wxRIGHT, 50));
+    sizer->Add(textSizer, wxSizerFlags().Center().Expand().Border(wxLEFT | wxRIGHT, CTRL_BORDER));
 
     wxBoxSizer *buttonsSizer = new wxBoxSizer(wxHORIZONTAL);
     wxSizerFlags flags2 = wxSizerFlags().Center();

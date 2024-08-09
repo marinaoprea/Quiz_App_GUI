@@ -5,11 +5,11 @@
 
 QuizFrame::QuizFrame() : wxFrame(nullptr, wxID_ANY, "Quiz")
 {
-    this->SetFont(this->GetFont().Scale(1.5));
+    this->SetFont(this->GetFont().Scale(TEXT_SCALE));
     panel = new wxPanel(this, wxID_ANY, wxDefaultPosition, wxDefaultSize);
     text = new wxStaticText(panel, wxID_ANY, "");
-    textCtrl = new wxTextCtrl(panel, wxID_ANY, "Insert meaning", wxDefaultPosition, wxSize(-1, 50), wxTE_PROCESS_ENTER);
-    check = new wxButton(panel, wxID_ANY, "Check", wxDefaultPosition, wxSize(150, 75));
+    textCtrl = new wxTextCtrl(panel, wxID_ANY, "Insert meaning", wxDefaultPosition, wxSize(-1, CTRL_HEIGHT), wxTE_PROCESS_ENTER);
+    check = new wxButton(panel, wxID_ANY, "Check", wxDefaultPosition, wxSize(BUTTON_W, BUTTON_H));
 
     check->Bind(wxEVT_BUTTON, &QuizFrame::OnCheck, this);
     textCtrl->Bind(wxEVT_TEXT_ENTER, &QuizFrame::OnEnter, this);
@@ -39,7 +39,7 @@ void QuizFrame::Scale() noexcept
 
     sizer->Add(text, wxSizerFlags().Center());
     sizer->AddSpacer(50);
-    sizer->Add(textCtrl, wxSizerFlags().Expand().Border(wxLEFT | wxRIGHT, 50));
+    sizer->Add(textCtrl, wxSizerFlags().Expand().Border(wxLEFT | wxRIGHT, CTRL_BORDER));
 
     wxBoxSizer *buttonsSizer = new wxBoxSizer(wxHORIZONTAL);
     wxSizerFlags flags2 = wxSizerFlags().Center();
@@ -67,7 +67,7 @@ void QuizFrame::RunQuiz()
 
     std::string str = questions.at(no_questions - 1);
     text->SetLabelText(wxString::Format("What does %s mean?", str));
-    text->SetExtraStyle(wxBOLD);
+    text->SetFont(text->GetFont().Bold());
 }
 
 void QuizFrame::OnCheck(wxCommandEvent &evt)

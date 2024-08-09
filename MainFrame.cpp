@@ -9,20 +9,20 @@
 
 MainFrame::MainFrame(const wxString &title) : wxFrame(nullptr, wxID_ANY, title)
 {
-    this->SetFont(this->GetFont().Scale(1.5));
+    this->SetFont(this->GetFont().Scale(TEXT_SCALE));
 
     panel = new wxPanel(this, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxWANTS_CHARS);
 
-    buttonAdd = new wxButton(panel, wxID_ANY, "Add word", wxDefaultPosition, wxSize(200, 100));
+    buttonAdd = new wxButton(panel, wxID_ANY, "Add word", wxDefaultPosition, wxSize(MAIN_BUTTON_W, MAIN_BUTTON_H));
     buttonAdd->Bind(wxEVT_BUTTON, &MainFrame::OnAdd, this);
 
-    buttonSearch = new wxButton(panel, wxID_ANY, "Search word", wxDefaultPosition, wxSize(200, 100));
+    buttonSearch = new wxButton(panel, wxID_ANY, "Search word", wxDefaultPosition, wxSize(MAIN_BUTTON_W, MAIN_BUTTON_H));
     buttonSearch->Bind(wxEVT_BUTTON, &MainFrame::OnSearch, this);
 
-    buttonDelete = new wxButton(panel, wxID_ANY, "Delete word", wxDefaultPosition, wxSize(200, 100));
+    buttonDelete = new wxButton(panel, wxID_ANY, "Delete word", wxDefaultPosition, wxSize(MAIN_BUTTON_W, MAIN_BUTTON_H));
     buttonDelete->Bind(wxEVT_BUTTON, &MainFrame::OnDelete, this);
 
-    buttonQuiz = new wxButton(panel, wxID_ANY, "Quiz", wxDefaultPosition, wxSize(200, 100));
+    buttonQuiz = new wxButton(panel, wxID_ANY, "Quiz", wxDefaultPosition, wxSize(MAIN_BUTTON_W, MAIN_BUTTON_H));
     buttonQuiz->Bind(wxEVT_BUTTON, &MainFrame::OnQuiz, this);
 
     Scale();
@@ -35,11 +35,11 @@ void MainFrame::Scale()
     wxSizerFlags flags = wxSizerFlags().Center();
     mainSizer->AddStretchSpacer(1);
     mainSizer->Add(buttonAdd, flags);
-    mainSizer->AddSpacer(20);
+    mainSizer->AddSpacer(MAIN_SPACER);
     mainSizer->Add(buttonSearch, flags);
-    mainSizer->AddSpacer(20);
+    mainSizer->AddSpacer(MAIN_SPACER);
     mainSizer->Add(buttonDelete, flags);
-    mainSizer->AddSpacer(20);
+    mainSizer->AddSpacer(MAIN_SPACER);
     mainSizer->Add(buttonQuiz, flags);
     mainSizer->AddStretchSpacer(1);
 

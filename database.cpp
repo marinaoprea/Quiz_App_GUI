@@ -55,23 +55,6 @@ void database::dump_to_file(const string &filename) const
     fout << j_arr.dump(4);
 }
 
-void database::search_word() const
-{
-    std::cout << "Insert word:";
-    std::string word;
-
-    std::cin.get();
-    std::getline(std::cin, word);
-
-    entity aux = entity(word, "");
-
-    auto it = data.find(aux);
-    if (it == data.end())
-        std::cout << "Word " + word + " does not exist!\n";
-    else
-        std::cout << it->get_word() + " = " + it->get_meaning() + "\n";
-}
-
 vector<string> database::get_quiz_questions() const
 {
     vector<const entity *> aux;

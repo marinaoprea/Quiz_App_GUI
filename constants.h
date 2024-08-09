@@ -3,9 +3,16 @@
 constexpr short int HEIGHT = 800;
 constexpr short int WIDTH = 1000;
 
-#define BUTTON_X(X) ((WIDTH - X) / 2)
+constexpr short int MAIN_BUTTON_W = 200;
+constexpr short int MAIN_BUTTON_H = 100;
+constexpr short int MAIN_SPACER = 20;
 
-constexpr short int AUTOSAVE_LIMIT = 3;
+constexpr float TEXT_SCALE = 1.5;
+constexpr short int BUTTON_W = 150;
+constexpr short int BUTTON_H = 75;
+constexpr short int CTRL_HEIGHT = 50;
+constexpr short int CTRL_BORDER = 50;
+
 constexpr short int INITIAL_WORD_LIVES = 3;
 constexpr short int NO_QUESTIONS = 5;
 const std::string DATABASE_PATH{"database.txt"};
