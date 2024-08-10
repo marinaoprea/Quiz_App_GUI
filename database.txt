@@ -1,12 +1,1097 @@
 [
     {
-        "lives": 3,
-        "meaning": "mar",
-        "word": "Apfel"
+        "lives": 6,
+        "meaning": "a se referi la",
+        "word": "Bezug nehmen auf"
     },
     {
         "lives": 3,
-        "meaning": "Insert meaning",
-        "word": "Insert word"
+        "meaning": "a impurumuta bani",
+        "word": "Geld vorschiessen"
+    },
+    {
+        "lives": 2,
+        "meaning": "a debita",
+        "word": "abbuchen"
+    },
+    {
+        "lives": 3,
+        "meaning": "Billanz aufstellen",
+        "word": "abrechnen"
+    },
+    {
+        "lives": 6,
+        "meaning": "a taia calea",
+        "word": "abschneiden"
+    },
+    {
+        "lives": 3,
+        "meaning": "a renunta",
+        "word": "abtreten"
+    },
+    {
+        "lives": 2,
+        "meaning": "a tranzactiona",
+        "word": "abwickeln"
+    },
+    {
+        "lives": 2,
+        "meaning": "a tinti",
+        "word": "abzielen auf"
+    },
+    {
+        "lives": 7,
+        "meaning": "dependent",
+        "word": "angewiesen"
+    },
+    {
+        "lives": 3,
+        "meaning": "aparent",
+        "word": "anscheinend"
+    },
+    {
+        "lives": 3,
+        "meaning": "a incuraja",
+        "word": "anspornen"
+    },
+    {
+        "lives": 3,
+        "meaning": "a inchiria",
+        "word": "anstellen"
+    },
+    {
+        "lives": 3,
+        "meaning": "a aplica",
+        "word": "anwenden"
+    },
+    {
+        "lives": 3,
+        "meaning": "a iesi in evidenta",
+        "word": "auffallen"
+    },
+    {
+        "lives": 3,
+        "meaning": "a cere",
+        "word": "auffordern"
+    },
+    {
+        "lives": 3,
+        "meaning": "a ridica",
+        "word": "aufgreifen"
+    },
+    {
+        "lives": 3,
+        "meaning": "cu sinceritate",
+        "word": "aufrichtig"
+    },
+    {
+        "lives": 2,
+        "meaning": "complex",
+        "word": "aufwendig"
+    },
+    {
+        "lives": 7,
+        "meaning": "a localiz",
+        "word": "ausfindig machen"
+    },
+    {
+        "lives": 3,
+        "meaning": "a citi cu voce tare",
+        "word": "auslesen"
+    },
+    {
+        "lives": 3,
+        "meaning": "crucial",
+        "word": "ausschlaggebend"
+    },
+    {
+        "lives": 3,
+        "meaning": "a exploata",
+        "word": "ausschopfen"
+    },
+    {
+        "lives": 3,
+        "meaning": "a aplica pentru",
+        "word": "beantragen"
+    },
+    {
+        "lives": 7,
+        "meaning": "a favoriza",
+        "word": "beguenstigen"
+    },
+    {
+        "lives": 7,
+        "meaning": "a persevera",
+        "word": "beharren auf"
+    },
+    {
+        "lives": 2,
+        "meaning": "a trage cu urechea",
+        "word": "belauschen"
+    },
+    {
+        "lives": 3,
+        "meaning": "a rasplati",
+        "word": "belohnen"
+    },
+    {
+        "lives": 7,
+        "meaning": "justificat",
+        "word": "berechtigt"
+    },
+    {
+        "lives": 3,
+        "meaning": "a urmari din umbra",
+        "word": "beschatten"
+    },
+    {
+        "lives": 3,
+        "meaning": "a spiona",
+        "word": "bespitzeln"
+    },
+    {
+        "lives": 7,
+        "meaning": "existent",
+        "word": "bestehend"
+    },
+    {
+        "lives": 3,
+        "meaning": "a prefera",
+        "word": "bevorzugen"
+    },
+    {
+        "lives": 3,
+        "meaning": "a aproba",
+        "word": "bewilligen"
+    },
+    {
+        "lives": 3,
+        "meaning": "a subventiona",
+        "word": "bezuschussen"
+    },
+    {
+        "lives": 6,
+        "meaning": "a frana",
+        "word": "bremsen"
+    },
+    {
+        "lives": 7,
+        "meaning": "a se pierde",
+        "word": "das Abhandenkommen"
+    },
+    {
+        "lives": 2,
+        "meaning": "nevoie",
+        "word": "das Bedurfnis"
+    },
+    {
+        "lives": 3,
+        "meaning": "economii",
+        "word": "das Ersparte"
+    },
+    {
+        "lives": 2,
+        "meaning": "concluzie",
+        "word": "das Fazit/e"
+    },
+    {
+        "lives": 3,
+        "meaning": "salariu",
+        "word": "das Gehalt/die Gehaelter"
+    },
+    {
+        "lives": 3,
+        "meaning": "bun",
+        "word": "das Gut"
+    },
+    {
+        "lives": 3,
+        "meaning": "evaluare",
+        "word": "das Gutachten"
+    },
+    {
+        "lives": 3,
+        "meaning": "grija",
+        "word": "das Kopfzerbrecher"
+    },
+    {
+        "lives": 3,
+        "meaning": "samanta",
+        "word": "das Saatgut"
+    },
+    {
+        "lives": 3,
+        "meaning": "regula",
+        "word": "das Verzeichnis/se"
+    },
+    {
+        "lives": 3,
+        "meaning": "distanta",
+        "word": "der Abstand"
+    },
+    {
+        "lives": 3,
+        "meaning": "aplicare",
+        "word": "der Antrag"
+    },
+    {
+        "lives": 6,
+        "meaning": "compensare",
+        "word": "der Ausgleich"
+    },
+    {
+        "lives": 3,
+        "meaning": "ofiter",
+        "word": "der Beamte/n"
+    },
+    {
+        "lives": 2,
+        "meaning": "constatare",
+        "word": "der Befund/e"
+    },
+    {
+        "lives": 3,
+        "meaning": "contributie",
+        "word": "der Beitrag/Beitraege"
+    },
+    {
+        "lives": 2,
+        "meaning": "rata de contributie",
+        "word": "der Beitragsatz"
+    },
+    {
+        "lives": 7,
+        "meaning": "chitanta",
+        "word": "der Beleg"
+    },
+    {
+        "lives": 7,
+        "meaning": "misiune",
+        "word": "der Einsatz"
+    },
+    {
+        "lives": 3,
+        "meaning": "punct de vedere",
+        "word": "der Gesichtpunkt"
+    },
+    {
+        "lives": 2,
+        "meaning": "presiunea de a efectua",
+        "word": "der Leistungdruck"
+    },
+    {
+        "lives": 2,
+        "meaning": "guideline",
+        "word": "der Leitfaden"
+    },
+    {
+        "lives": 6,
+        "meaning": "menmonic",
+        "word": "der Merkspruch"
+    },
+    {
+        "lives": 7,
+        "meaning": "plangere",
+        "word": "der Missstand"
+    },
+    {
+        "lives": 7,
+        "meaning": "rima",
+        "word": "der Reim/e"
+    },
+    {
+        "lives": 6,
+        "meaning": "indemnitate",
+        "word": "der Schadenersatz"
+    },
+    {
+        "lives": 7,
+        "meaning": "gluma",
+        "word": "der Streich"
+    },
+    {
+        "lives": 7,
+        "meaning": "volum de vanzari",
+        "word": "der Umsatz"
+    },
+    {
+        "lives": 3,
+        "meaning": "avocat",
+        "word": "der Verfechter"
+    },
+    {
+        "lives": 7,
+        "meaning": "schimbare",
+        "word": "der Wandel"
+    },
+    {
+        "lives": 2,
+        "meaning": "nod in papura",
+        "word": "der Wermutstropfen"
+    },
+    {
+        "lives": 2,
+        "meaning": "contradictie",
+        "word": "der Widerspruch"
+    },
+    {
+        "lives": 2,
+        "meaning": "acces",
+        "word": "der Zugriff/e"
+    },
+    {
+        "lives": 7,
+        "meaning": "aflux",
+        "word": "der Zuzug"
+    },
+    {
+        "lives": 3,
+        "meaning": "obligatie",
+        "word": "der Zwang/Zwaenge"
+    },
+    {
+        "lives": 7,
+        "meaning": "astfel de",
+        "word": "derartig"
+    },
+    {
+        "lives": 3,
+        "meaning": "respingere",
+        "word": "die Ablehnung/en"
+    },
+    {
+        "lives": 7,
+        "meaning": "cifra de vanzari",
+        "word": "die Absatzzahl"
+    },
+    {
+        "lives": 3,
+        "meaning": "putere defensiva",
+        "word": "die Abwehrkraft"
+    },
+    {
+        "lives": 6,
+        "meaning": "materie",
+        "word": "die Angelegenheit"
+    },
+    {
+        "lives": 2,
+        "meaning": "aplicatie",
+        "word": "die Anwendung"
+    },
+    {
+        "lives": 7,
+        "meaning": "exploatare",
+        "word": "die Ausbeutung"
+    },
+    {
+        "lives": 7,
+        "meaning": "mobilier",
+        "word": "die Ausstattung"
+    },
+    {
+        "lives": 2,
+        "meaning": "tratament",
+        "word": "die Behandlung"
+    },
+    {
+        "lives": 7,
+        "meaning": "consecinta",
+        "word": "die Beharrlichkeit"
+    },
+    {
+        "lives": 3,
+        "meaning": "considerare",
+        "word": "die Berucksichtigung"
+    },
+    {
+        "lives": 6,
+        "meaning": "activitate",
+        "word": "die Betaetigung"
+    },
+    {
+        "lives": 6,
+        "meaning": "ingrijire",
+        "word": "die Betreuung"
+    },
+    {
+        "lives": 3,
+        "meaning": "serviciu",
+        "word": "die Dienstleistung/en"
+    },
+    {
+        "lives": 7,
+        "meaning": "vanitate",
+        "word": "die Eitelkeit"
+    },
+    {
+        "lives": 7,
+        "meaning": "deblocare",
+        "word": "die Entriegelung"
+    },
+    {
+        "lives": 7,
+        "meaning": "explicatie",
+        "word": "die Erlauterung"
+    },
+    {
+        "lives": 6,
+        "meaning": "angajat",
+        "word": "die Erwerbstaetige"
+    },
+    {
+        "lives": 7,
+        "meaning": "remote control",
+        "word": "die Fernsteuerung"
+    },
+    {
+        "lives": 7,
+        "meaning": "vioara",
+        "word": "die Geige"
+    },
+    {
+        "lives": 2,
+        "meaning": "seninatate",
+        "word": "die Gelassenheit"
+    },
+    {
+        "lives": 1,
+        "meaning": "investitie",
+        "word": "die Geldanlage/n"
+    },
+    {
+        "lives": 3,
+        "meaning": "garantie",
+        "word": "die Gewaehr"
+    },
+    {
+        "lives": 7,
+        "meaning": "erzielen",
+        "word": "die Halbkugel"
+    },
+    {
+        "lives": 3,
+        "meaning": "performanta",
+        "word": "die Leistungfahigkeit"
+    },
+    {
+        "lives": 7,
+        "meaning": "masinatie",
+        "word": "die Machenschaft"
+    },
+    {
+        "lives": 3,
+        "meaning": "masura",
+        "word": "die Massnahme"
+    },
+    {
+        "lives": 3,
+        "meaning": "intoarcere",
+        "word": "die Rendite"
+    },
+    {
+        "lives": 7,
+        "meaning": "fir",
+        "word": "die Saite/n"
+    },
+    {
+        "lives": 7,
+        "meaning": "teaca",
+        "word": "die Schotte"
+    },
+    {
+        "lives": 3,
+        "meaning": "opinie",
+        "word": "die Stellungnahme/n"
+    },
+    {
+        "lives": 3,
+        "meaning": "omisiune",
+        "word": "die Unterlassung/en"
+    },
+    {
+        "lives": 7,
+        "meaning": "acord",
+        "word": "die Vereinbarung"
+    },
+    {
+        "lives": 2,
+        "meaning": "reducere",
+        "word": "die Vergungstigung"
+    },
+    {
+        "lives": 3,
+        "meaning": "scurtatura",
+        "word": "die Verknupfung/en"
+    },
+    {
+        "lives": 6,
+        "meaning": "confuzie",
+        "word": "die Verwirung"
+    },
+    {
+        "lives": 3,
+        "meaning": "previziune",
+        "word": "die Voraussage/n"
+    },
+    {
+        "lives": 3,
+        "meaning": "specificatie",
+        "word": "die Vorgabe/n"
+    },
+    {
+        "lives": 7,
+        "meaning": "perceptie",
+        "word": "die Wahrenmung"
+    },
+    {
+        "lives": 7,
+        "meaning": "efect",
+        "word": "die Wirkung"
+    },
+    {
+        "lives": 5,
+        "meaning": "marturie de martor",
+        "word": "die Zeugenaussage"
+    },
+    {
+        "lives": 7,
+        "meaning": "fara fir",
+        "word": "drahtlos"
+    },
+    {
+        "lives": 2,
+        "meaning": "a plati o taxa",
+        "word": "eine Gebuhr entrichen"
+    },
+    {
+        "lives": 2,
+        "meaning": "a cere",
+        "word": "einfordern"
+    },
+    {
+        "lives": 7,
+        "meaning": "a retine",
+        "word": "einhalten"
+    },
+    {
+        "lives": 7,
+        "meaning": "a corela cu",
+        "word": "einhergehen mit"
+    },
+    {
+        "lives": 3,
+        "meaning": "a ajunge din urma",
+        "word": "einholen"
+    },
+    {
+        "lives": 3,
+        "meaning": "a trimite",
+        "word": "einreichen"
+    },
+    {
+        "lives": 7,
+        "meaning": "a omite",
+        "word": "entfallen"
+    },
+    {
+        "lives": 2,
+        "meaning": "a revoca",
+        "word": "entziehen"
+    },
+    {
+        "lives": 3,
+        "meaning": "a primi",
+        "word": "erhalten"
+    },
+    {
+        "lives": 3,
+        "meaning": "a ridica",
+        "word": "erheben"
+    },
+    {
+        "lives": 7,
+        "meaning": "considerabil",
+        "word": "erheblich"
+    },
+    {
+        "lives": 7,
+        "meaning": "a determina",
+        "word": "ermitteln"
+    },
+    {
+        "lives": 7,
+        "meaning": "a recolta",
+        "word": "ernten"
+    },
+    {
+        "lives": 3,
+        "meaning": "a santaja",
+        "word": "erpressen"
+    },
+    {
+        "lives": 3,
+        "meaning": "a calcula",
+        "word": "errechnen"
+    },
+    {
+        "lives": 2,
+        "meaning": "a restitui",
+        "word": "erstatten"
+    },
+    {
+        "lives": 7,
+        "meaning": "a da",
+        "word": "erteilen"
+    },
+    {
+        "lives": 3,
+        "meaning": "merita mentionat",
+        "word": "erwahnenswert"
+    },
+    {
+        "lives": 2,
+        "meaning": "eventual",
+        "word": "etwaig"
+    },
+    {
+        "lives": 3,
+        "meaning": "uzual",
+        "word": "gelaufig"
+    },
+    {
+        "lives": 7,
+        "meaning": "a aplica",
+        "word": "gelten"
+    },
+    {
+        "lives": 7,
+        "meaning": "a permite",
+        "word": "genehmigen"
+    },
+    {
+        "lives": 7,
+        "meaning": "a permite",
+        "word": "gestatten"
+    },
+    {
+        "lives": 7,
+        "meaning": "cu incredere",
+        "word": "getrost"
+    },
+    {
+        "lives": 2,
+        "meaning": "a acorda",
+        "word": "gewaehren"
+    },
+    {
+        "lives": 3,
+        "meaning": "a garanta",
+        "word": "gewaehrleisten"
+    },
+    {
+        "lives": 7,
+        "meaning": "comercial",
+        "word": "gewerblich"
+    },
+    {
+        "lives": 7,
+        "meaning": "cu siguranta",
+        "word": "gewiss"
+    },
+    {
+        "lives": 7,
+        "meaning": "brut",
+        "word": "grob"
+    },
+    {
+        "lives": 6,
+        "meaning": "valabil",
+        "word": "gueltig"
+    },
+    {
+        "lives": 3,
+        "meaning": "a credita",
+        "word": "gutschreiben"
+    },
+    {
+        "lives": 7,
+        "meaning": "robust",
+        "word": "handfest"
+    },
+    {
+        "lives": 2,
+        "meaning": "in cadrul",
+        "word": "im Rahmen(von)"
+    },
+    {
+        "lives": 3,
+        "meaning": "in esenta",
+        "word": "im Wesenlichen"
+    },
+    {
+        "lives": 3,
+        "meaning": "as part",
+        "word": "im Zuge"
+    },
+    {
+        "lives": 3,
+        "meaning": "go at",
+        "word": "in Angriff nehmen"
+    },
+    {
+        "lives": 1,
+        "meaning": "a revendica",
+        "word": "in Anspruch zu nehmen"
+    },
+    {
+        "lives": 2,
+        "meaning": "dincolo de",
+        "word": "jenseits"
+    },
+    {
+        "lives": 7,
+        "meaning": "lala",
+        "word": "lala"
+    },
+    {
+        "lives": 7,
+        "meaning": "laudabil",
+        "word": "lebenswert"
+    },
+    {
+        "lives": 1,
+        "meaning": "a conduce",
+        "word": "lenken"
+    },
+    {
+        "lives": 7,
+        "meaning": "implicat romantic",
+        "word": "luert sein"
+    },
+    {
+        "lives": 7,
+        "meaning": "esential",
+        "word": "massgeblich"
+    },
+    {
+        "lives": 6,
+        "meaning": "in opinia mea",
+        "word": "meines Erachtens"
+    },
+    {
+        "lives": 3,
+        "meaning": "a plange",
+        "word": "monieren"
+    },
+    {
+        "lives": 2,
+        "meaning": "durabil",
+        "word": "nachhaltig"
+    },
+    {
+        "lives": 3,
+        "meaning": "a intelege",
+        "word": "nachvollziehen"
+    },
+    {
+        "lives": 3,
+        "meaning": "dovedit",
+        "word": "nachweislich"
+    },
+    {
+        "lives": 3,
+        "meaning": "a tinde",
+        "word": "neigen zu"
+    },
+    {
+        "lives": 3,
+        "meaning": "a dezvalui",
+        "word": "offenlegen"
+    },
+    {
+        "lives": 3,
+        "meaning": "a retine",
+        "word": "pflegen"
+    },
+    {
+        "lives": 7,
+        "meaning": "concis",
+        "word": "praegnant"
+    },
+    {
+        "lives": 6,
+        "meaning": "recomandabil",
+        "word": "ratsam"
+    },
+    {
+        "lives": 3,
+        "meaning": "legal",
+        "word": "rechtens"
+    },
+    {
+        "lives": 7,
+        "meaning": "ilegal",
+        "word": "rechtswidrig"
+    },
+    {
+        "lives": 7,
+        "meaning": "a se furisa",
+        "word": "schleichen"
+    },
+    {
+        "lives": 3,
+        "meaning": "a se simti adresat",
+        "word": "sich angesprochen fuhlen"
+    },
+    {
+        "lives": 6,
+        "meaning": "a afecta",
+        "word": "sich auswirken auf"
+    },
+    {
+        "lives": 3,
+        "meaning": "a-si rezerva dreptul",
+        "word": "sich das Recht vorbehalten"
+    },
+    {
+        "lives": 7,
+        "meaning": "a se deschide",
+        "word": "sich erschliessen"
+    },
+    {
+        "lives": 7,
+        "meaning": "a se minti",
+        "word": "sich taeuschen"
+    },
+    {
+        "lives": 7,
+        "meaning": "a se suprasolicita",
+        "word": "sich ueberlasten"
+    },
+    {
+        "lives": 7,
+        "meaning": "a perpetua",
+        "word": "sich verewigen"
+    },
+    {
+        "lives": 7,
+        "meaning": "a acuza",
+        "word": "sich vorwerfen"
+    },
+    {
+        "lives": 7,
+        "meaning": "a se apara",
+        "word": "sich wehren"
+    },
+    {
+        "lives": 2,
+        "meaning": "a se abtine",
+        "word": "sich zugeln"
+    },
+    {
+        "lives": 7,
+        "meaning": "a veni de la",
+        "word": "stammen aus"
+    },
+    {
+        "lives": 2,
+        "meaning": "cu liniuta",
+        "word": "stichpunktartig"
+    },
+    {
+        "lives": 7,
+        "meaning": "inselator",
+        "word": "truegerisch"
+    },
+    {
+        "lives": 3,
+        "meaning": "mai ales",
+        "word": "uberwiegen"
+    },
+    {
+        "lives": 6,
+        "meaning": "a supraestima",
+        "word": "ueberbewerten"
+    },
+    {
+        "lives": 7,
+        "meaning": "a exagera",
+        "word": "uebertrieben"
+    },
+    {
+        "lives": 5,
+        "meaning": "a monitoria",
+        "word": "ueberwachen"
+    },
+    {
+        "lives": 2,
+        "meaning": "extensiv",
+        "word": "umfanglich"
+    },
+    {
+        "lives": 3,
+        "meaning": "neautorizat",
+        "word": "unbefugt"
+    },
+    {
+        "lives": 6,
+        "meaning": "impartit",
+        "word": "uneinig"
+    },
+    {
+        "lives": 7,
+        "meaning": "gratuit",
+        "word": "unentgeltig"
+    },
+    {
+        "lives": 3,
+        "meaning": "deizinhibat",
+        "word": "ungehemmt"
+    },
+    {
+        "lives": 6,
+        "meaning": "initial",
+        "word": "unspruenglich"
+    },
+    {
+        "lives": 7,
+        "meaning": "abtine de la",
+        "word": "unterlassen"
+    },
+    {
+        "lives": 2,
+        "meaning": "imediat",
+        "word": "unverzuglich"
+    },
+    {
+        "lives": 3,
+        "meaning": "a ascunde",
+        "word": "verbergen"
+    },
+    {
+        "lives": 7,
+        "meaning": "legat",
+        "word": "verbindlich"
+    },
+    {
+        "lives": 6,
+        "meaning": "a impinge",
+        "word": "verdraengen"
+    },
+    {
+        "lives": 7,
+        "meaning": "a rasplati",
+        "word": "vergueten"
+    },
+    {
+        "lives": 6,
+        "meaning": "crescut",
+        "word": "vermehrt"
+    },
+    {
+        "lives": 3,
+        "meaning": "a evita",
+        "word": "vermeiden"
+    },
+    {
+        "lives": 3,
+        "meaning": "obligatoriu",
+        "word": "verpflichtend"
+    },
+    {
+        "lives": 7,
+        "meaning": "a incuia",
+        "word": "verriegeln"
+    },
+    {
+        "lives": 7,
+        "meaning": "reducere",
+        "word": "verringern"
+    },
+    {
+        "lives": 2,
+        "meaning": "a decala",
+        "word": "versetzen"
+    },
+    {
+        "lives": 6,
+        "meaning": "a se scurge departe",
+        "word": "versickern"
+    },
+    {
+        "lives": 3,
+        "meaning": "a cauza",
+        "word": "verursachen"
+    },
+    {
+        "lives": 6,
+        "meaning": "a pastra in siguranta",
+        "word": "verwahren"
+    },
+    {
+        "lives": 7,
+        "meaning": "surprinzator",
+        "word": "verwunderlich"
+    },
+    {
+        "lives": 7,
+        "meaning": "a consuma",
+        "word": "verzehren"
+    },
+    {
+        "lives": 2,
+        "meaning": "a executa",
+        "word": "vollziehen"
+    },
+    {
+        "lives": 6,
+        "meaning": "supusa",
+        "word": "vorbehaltlich"
+    },
+    {
+        "lives": 3,
+        "meaning": "a impiedica",
+        "word": "vorbeugen"
+    },
+    {
+        "lives": 2,
+        "meaning": "destinat",
+        "word": "vorgesehen"
+    },
+    {
+        "lives": 7,
+        "meaning": "de anvergura",
+        "word": "weitreichend"
+    },
+    {
+        "lives": 7,
+        "meaning": "a se intampla",
+        "word": "widerfahren"
+    },
+    {
+        "lives": 7,
+        "meaning": "permis",
+        "word": "zulaessig"
+    },
+    {
+        "lives": 7,
+        "meaning": "coerent",
+        "word": "zusammenhagend"
+    },
+    {
+        "lives": 7,
+        "meaning": "inevitabil",
+        "word": "zwangslaeufig"
+    },
+    {
+        "lives": 3,
+        "meaning": "obligatoriu",
+        "word": "zwigend"
+    },
+    {
+        "lives": 7,
+        "meaning": "obligatoriu",
+        "word": "zwingend"
     }
 ]

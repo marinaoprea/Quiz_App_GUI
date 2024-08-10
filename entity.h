@@ -13,10 +13,10 @@ class entity
 private:
     string word{""};
     string meaning{""};
-    // short int lives{INITIAL_WORD_LIVES};
     short int *p;
 
 public:
+    entity(string word) : word(word) { p = new short int{INITIAL_WORD_LIVES}; }
     entity(string word, string meaning) : word(word), meaning(meaning) { p = new short int{INITIAL_WORD_LIVES}; }
     entity(string word, string meaning, short int lives) : word(word), meaning(meaning) { p = new short int{lives}; }
     entity(const entity &other);

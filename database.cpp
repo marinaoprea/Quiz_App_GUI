@@ -65,7 +65,7 @@ vector<string> database::get_quiz_questions() const
     for (auto &elem : data)
         aux.push_back(&elem);
 
-    if (aux.size() < NO_QUESTIONS)
+    if (aux.size() < NO_QUESTIONS and aux.size() < NO_CHOICES)
         throw NotSufficientElements();
 
     uniform_int_distribution<int> idist(0, aux.size() - 1);
@@ -87,7 +87,7 @@ vector<string> database::get_quiz_questions() const
 
 bool database::check(const string &word, const string &meaning) const
 {
-    auto elem = entity(word, "");
+    auto elem = entity(word);
     auto it = data.find(elem);
     if (it == data.end())
         return false;
@@ -97,7 +97,7 @@ bool database::check(const string &word, const string &meaning) const
 
 bool database::decrement_lives(const string &word)
 {
-    auto elem = entity(word, "");
+    auto elem = entity(word);
     auto it = data.find(elem);
     if (it == data.end())
         return false;
@@ -120,7 +120,7 @@ void database::erase_word(const string &word)
 
 string database::search_meaning(const string &word) const
 {
-    auto it = data.find(entity(word, ""));
+    auto it = data.find(entity(word));
     if (it == data.end())
     {
         throw WordNotFound(word);
