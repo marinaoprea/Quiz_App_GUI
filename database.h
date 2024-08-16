@@ -17,6 +17,7 @@ public:
     string add_word(const string &word, const string &meaning);
     void dump_to_file(const string &filename) const;
 
+    vector<string> search_contains(const string &word) const;
     string search_meaning(const string &word) const;
     vector<string> get_quiz_questions()const;
     int check(const string &word, const string &meaning) const;

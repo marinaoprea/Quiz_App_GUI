@@ -1,6 +1,7 @@
 #include <wx/wx.h>
 #include <wx/textctrl.h>
 #include <wx/spinctrl.h>
+#include <algorithm>
 #include "SearchFrame.h"
 #include "constants.h"
 #include "exceptions.h"
@@ -70,9 +71,19 @@ void SearchFrame::OnSearch(wxCommandEvent &evt)
     }
     catch (WordNotFound &exc)
     {
-        auto p = exc.what();
-        wxLogMessage(p);
-        delete p;
+        auto ans = db->search_contains(word);
+        if (ans.empty())
+        {
+            auto p = exc.what();
+            wxLogMessage(p);
+            delete p;
+        }
+        else
+        {
+            string total;
+            for_each(ans.cbegin(), ans.cend(), [&total](string str) {total += str + " ";});
+            wxLogMessage(wxString("Word not found. Suggestions: " + total));
+        }
     }
     evt.Skip();
 

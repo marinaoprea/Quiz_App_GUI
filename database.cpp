@@ -129,6 +129,16 @@ string database::search_meaning(const string &word) const
     return it->get_meaning();
 }
 
+vector<string> database::search_contains(const string &word) const
+{
+    vector<string> ans;
+    for (auto elem : data)
+        if (elem.get_word().find(word) != elem.get_word().npos)
+            ans.push_back(elem.get_word());
+
+    return ans;
+}
+
 pair<string, vector<string>> database::get_multiple(const string &question) const
 {
     auto meaning = search_meaning(question);
