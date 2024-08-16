@@ -19,7 +19,7 @@ public:
 
     string search_meaning(const string &word) const;
     vector<string> get_quiz_questions()const;
-    bool check(const string &word, const string &meaning) const;
+    int check(const string &word, const string &meaning) const;
     bool decrement_lives(const string &word);
     void erase_word(const string &word);
 

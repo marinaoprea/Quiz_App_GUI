@@ -85,14 +85,14 @@ vector<string> database::get_quiz_questions() const
     return ans;
 }
 
-bool database::check(const string &word, const string &meaning) const
+int database::check(const string &word, const string &meaning) const
 {
     auto elem = entity(word);
     auto it = data.find(elem);
     if (it == data.end())
-        return false;
+        return 1e9;
 
-    return it->get_meaning() == meaning;
+    return levenstein(it->get_meaning(), meaning);
 }
 
 bool database::decrement_lives(const string &word)

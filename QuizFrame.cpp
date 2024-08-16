@@ -83,8 +83,8 @@ void QuizFrame::OnCheck(wxCommandEvent &evt)
         return;
     }
 
-    bool correct = db->check(word, meaning);
-    if (correct)
+    int correct = db->check(word, meaning);
+    if (!correct)
     {
         auto rc = db->decrement_lives(word);
         wxLogStatus(this, "Correct");
@@ -100,6 +100,12 @@ void QuizFrame::OnCheck(wxCommandEvent &evt)
         }
 
         RunQuiz();
+        return;
+    }
+
+    if (correct <= ACC_DIFF) 
+    {
+        wxLogMessage(wxString::Format("Wrong by %d differences! Try again!", correct));
         return;
     }
 
