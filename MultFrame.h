@@ -2,16 +2,19 @@
 
 #include <wx/wx.h>
 #include <vector>
+#include <chrono>
 #include "constants.h"
 #include "database.h"
 
 extern database *db;
 
-class MultFrame : public wxFrame {
+class MultFrame : public wxFrame
+{
 public:
     MultFrame();
 
 private:
+    chrono::steady_clock::time_point time;
     short int no_questions{NO_QUESTIONS};
     short int good{0};
     wxPanel *panel;

@@ -1,4 +1,5 @@
 #include <wx/wx.h>
+#include <chrono>
 #include "MultFrame.h"
 #include "exceptions.h"
 #include <iostream>
@@ -20,6 +21,8 @@ MultFrame::MultFrame() : wxFrame(nullptr, wxID_ANY, "Multiple choice")
 
     CreateStatusBar();
     Scale();
+
+    time = chrono::steady_clock::now();
 
     try
     {
@@ -61,7 +64,12 @@ void MultFrame::RunQuiz()
 {
     if (no_questions == 0)
     {
-        text->SetLabelText(wxString::Format("Results: %d / %d", good, NO_QUESTIONS));
+        auto time2 = chrono::steady_clock::now();
+
+        auto diff = chrono::duration_cast<chrono::seconds>(time2 - time).count();
+        auto minutes = diff / 60;
+        auto sec = diff - minutes * 60;
+        text->SetLabelText(wxString::Format("Results: %d / %d\nTime taken: %lld : %lld", good, NO_QUESTIONS, minutes, sec));
         check->Unbind(wxEVT_BUTTON, &MultFrame::OnCheck, this);
         return;
     }
@@ -72,7 +80,12 @@ void MultFrame::RunQuiz()
 
     auto p = db->get_multiple(str);
     correct = p.first;
+
     for (int i = 0; i < NO_CHOICES; i++)
+        choice->SetString(i, "-");
+
+    auto minim = std::min(static_cast<int>(NO_CHOICES), db->get_size());
+    for (int i = 0; i < minim; i++)
         choice->SetString(i, wxString(p.second.at(i)));
     choice->Select(0);
 }

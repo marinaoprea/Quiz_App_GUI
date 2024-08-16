@@ -2,6 +2,7 @@
 
 #include <wx/wx.h>
 #include <vector>
+#include <chrono>
 #include "constants.h"
 #include "database.h"
 
@@ -12,6 +13,7 @@ public:
     QuizFrame();
 
 private:
+    chrono::steady_clock::time_point time;
     short int no_questions{NO_QUESTIONS};
     short int good{0};
     wxPanel *panel;

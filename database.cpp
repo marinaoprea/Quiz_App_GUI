@@ -65,7 +65,7 @@ vector<string> database::get_quiz_questions() const
     for (auto &elem : data)
         aux.push_back(&elem);
 
-    if (aux.size() < NO_QUESTIONS and aux.size() < NO_CHOICES)
+    if (aux.size() < NO_QUESTIONS)
         throw NotSufficientElements();
 
     uniform_int_distribution<int> idist(0, aux.size() - 1);
@@ -111,7 +111,7 @@ bool database::decrement_lives(const string &word)
 
 void database::erase_word(const string &word)
 {
-    auto elem = entity(word, "");
+    auto elem = entity(word);
     auto it = data.find(elem);
     if (it == data.end())
         throw WordNotFound(word);
@@ -143,30 +143,43 @@ pair<string, vector<string>> database::get_multiple(const string &question) cons
 {
     auto meaning = search_meaning(question);
     vector<string> ans;
-    ans.push_back(meaning);
 
     random_device rd;
     vector<const entity *> aux;
     mt19937 mt(rd());
 
-    for (auto &elem : data)
-        aux.push_back(&elem);
-
-    uniform_int_distribution<int> idist(0, aux.size() - 1);
-
-    for (auto i = 1; i < NO_CHOICES; i++)
+    if (data.size() < NO_CHOICES)
     {
-        auto index = idist(mt);
-        auto elem = aux.at(index);
-        auto meaning2 = elem->get_meaning();
-        auto it = find(ans.begin(), ans.end(), meaning2);
-        if (it == ans.end())
-            ans.push_back(meaning2);
-        else
-            i--;
+        for_each(data.cbegin(), data.cend(), [&ans](entity elem)
+                 { ans.push_back(elem.get_meaning()); });
+    }
+    else
+    {
+        for (auto &elem : data)
+            aux.push_back(&elem);
+
+        ans.push_back(meaning);
+        uniform_int_distribution<int> idist(0, aux.size() - 1);
+
+        for (auto i = 1; i < NO_CHOICES; i++)
+        {
+            auto index = idist(mt);
+            auto elem = aux.at(index);
+            auto meaning2 = elem->get_meaning();
+            auto it = find(ans.begin(), ans.end(), meaning2);
+            if (it == ans.end())
+                ans.push_back(meaning2);
+            else
+                i--;
+        }
     }
 
     shuffle(ans.begin(), ans.end(), default_random_engine(rd()));
 
     return make_pair(meaning, ans);
+}
+
+int database::get_size() const
+{
+    return data.size();
 }

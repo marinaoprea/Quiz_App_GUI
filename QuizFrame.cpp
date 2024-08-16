@@ -1,7 +1,8 @@
 #include <wx/wx.h>
+#include <chrono>
+#include <iostream>
 #include "QuizFrame.h"
 #include "exceptions.h"
-#include <iostream>
 
 QuizFrame::QuizFrame() : wxFrame(nullptr, wxID_ANY, "Quiz")
 {
@@ -17,6 +18,8 @@ QuizFrame::QuizFrame() : wxFrame(nullptr, wxID_ANY, "Quiz")
 
     CreateStatusBar();
     Scale();
+
+    time = chrono::steady_clock::now();
 
     try
     {
@@ -58,7 +61,12 @@ void QuizFrame::RunQuiz()
 {
     if (no_questions == 0)
     {
-        text->SetLabelText(wxString::Format("Results: %d / %d", good, NO_QUESTIONS));
+        auto time2 = chrono::steady_clock::now();
+
+        auto diff = chrono::duration_cast<chrono::seconds>(time2 - time).count();
+        auto minutes = diff / 60;
+        auto sec = diff - minutes * 60;
+        text->SetLabelText(wxString::Format("Results: %d / %d\nTime taken: %lld : %lld", good, NO_QUESTIONS, minutes, sec));
         check->Unbind(wxEVT_BUTTON, &QuizFrame::OnCheck, this);
         textCtrl->Unbind(wxEVT_TEXT_ENTER, &QuizFrame::OnEnter, this);
         textCtrl->Clear();

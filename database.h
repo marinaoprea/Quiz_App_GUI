@@ -24,6 +24,8 @@ public:
     bool decrement_lives(const string &word);
     void erase_word(const string &word);
 
+    int get_size() const;
+
     pair<string, vector<string>> get_multiple(const string &question) const;
 };
 
