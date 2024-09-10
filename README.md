@@ -35,20 +35,30 @@
     In order for additions and deletions to be persistent, <i>Save</i> operation should be performed or window should be closed (then Save is performed by default).
 </p>
 
+<h3>Search operation</h3>
+<p>
+    Search operation first searches for a perfect match. If
+not found, suggestions are sought. Words containing given string are the suggestions considered.
+</p>
+
 <h3>Quiz operations </h3>
 <p> Besides the word itself and its meaning, a new field was introduced, that is the number of times the word should be further correctly answered in order for it to be considered learned. <br>
     At first, a default number of "lives" is set and it decreases as the word is ansewered correctly inside a quiz operation. <br>
     However, when a word is considered ready to be deleted, the user is asked if the operation should be performed, in order to give the possibility of still maintaining it in the database.
 </p>
 
-<p> For quizes to work, there should be at least as many words introduced as the number of questions in the quiz and at least as many as the number of choices in the multiple choice quiz. <br>
+<p> For quizes to work, there should be at least as many words introduced as the number of questions in the quiz. <br>
     Quiz questions are loaded statically as the quiz is requested and therefore changes produced by itself on the database are not taken into consideration.
 <p>
 
 <p> There are 2 types of quizes, normal quiz and multiple choice quiz.<br>
     For the multiple choice, random meanings are taken as choices for every question. <br>
-    This quiz is easier than the normal one, where the requested meaning from the user, as quiz answer, should be precise in order to be considered correct.
+    This quiz is easier than the normal one, where the requested meaning from the user, as quiz answer, should be precise in order to be considered correct. If the answer is at a <i>levenstein</i> distance of at most 5 characters (5 characters that are different or that are missing), warning is given and a new try is offered.
 </p>
+
+<p>
+    Time taken for solving is measured and printed at the end for each quiz taken.
+</p> 
 
 <h4>Technical details</h4>
 <p>
@@ -62,6 +72,14 @@
 
 <p>
     Random indexes were chosen using a uniform distribution, that is number of lives of a word is irrelevant.
+</p>
+
+<p>
+    For time measurement <i>chrono::steady_clock</i> was used, that is monotonic clock that only counts increasingly.
+</p>
+
+<p>
+    Levenstein distance can be easily calculated using dynamic programming.
 </p>
 
 <h3>GUI</h3>
